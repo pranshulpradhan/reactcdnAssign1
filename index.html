@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReactJS Web Page</title>
+  <!-- React CDN links -->
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+</head>
+
+<body>
+
+  <div id="root"></div>
+
+  <script>
+    // Content to be displayed
+    const content = {
+      title: "Learn web development",
+      first: ["Welcome to the MDN learning area. This set of articles aims to guide complete ", "beginners to web development with all that they need to start coding websites."],
+      second: ["The aim of this area of MDN is not to take you from 'beginner' to 'expert' but to ", "take you from 'beginner' to 'comfortable.' From there, you should be able to start ", "making your way, learning from ",
+               "the rest of MDN", ", and other intermediate to ", "advanced resources that assume a lot of previous knowledge."],
+      third: ["If you are a complete beginner, web development can be challenging — we will hold ","your hand and provide enough detail for you to feel comfortable and learn the topics ","properly. You should feel at home whether you are a student learning web ","development (on your own or as part of a class), a teacher looking for class ","materials, a hobbyist, or someone who just wants to understand more about how ","web technologies work."]
+    };
+
+    // Create React elements
+    const app = React.createElement('div', null,
+      React.createElement('h1', null, content.title),
+      React.createElement('br'),
+      React.createElement('div', { className: 'first' },
+        content.first.map((paragraph, index) => React.createElement('p', { key: index }, paragraph))
+      ),
+      React.createElement('br'),
+      React.createElement('div', { className: 'second' },
+        React.createElement('p', null, content.second[0]),
+        React.createElement('p', null, content.second[1]),
+        React.createElement('p', null, content.second[2], React.createElement('a', { href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' }, content.second[3]),
+        content.second[4]),
+        React.createElement('p', null, content.second[5]),
+      ),
+      React.createElement('br'),
+      React.createElement('div', { className: 'third' },
+        content.third.map((paragraph, index) => React.createElement('p', { key: index }, paragraph))
+      )
+    );
+
+    // Render the React elements
+    ReactDOM.render(app, document.getElementById('root'));
+  </script>
+
+</body>
+
+</html>
